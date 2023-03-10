@@ -1,0 +1,44 @@
+fail: 10.03.2023 19:43:39.134 RelationalEventId.CommandError[20102] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Failed executing DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Clients` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `Name` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Email` longtext CHARACTER SET utf8mb4 NULL,
+          `Phone` longtext CHARACTER SET utf8mb4 NULL,
+          `Address` longtext CHARACTER SET utf8mb4 NULL,
+          `Comment` longtext CHARACTER SET utf8mb4 NULL,
+          CONSTRAINT `PK_Clients` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+fail: 10.03.2023 19:44:16.438 RelationalEventId.CommandError[20102] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Failed executing DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Clients` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `Name` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Email` longtext CHARACTER SET utf8mb4 NULL,
+          `Phone` longtext CHARACTER SET utf8mb4 NULL,
+          `Address` longtext CHARACTER SET utf8mb4 NULL,
+          `Comment` longtext CHARACTER SET utf8mb4 NULL,
+          CONSTRAINT `PK_Clients` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+fail: 10.03.2023 19:46:29.463 RelationalEventId.CommandError[20102] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Failed executing DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Clients` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `Name` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Email` longtext CHARACTER SET utf8mb4 NULL,
+          `Phone` longtext CHARACTER SET utf8mb4 NULL,
+          `Address` longtext CHARACTER SET utf8mb4 NULL,
+          `Comment` longtext CHARACTER SET utf8mb4 NULL,
+          CONSTRAINT `PK_Clients` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+fail: 10.03.2023 19:47:14.491 RelationalEventId.CommandError[20102] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Failed executing DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Clients` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `Name` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Email` longtext CHARACTER SET utf8mb4 NULL,
+          `Phone` longtext CHARACTER SET utf8mb4 NULL,
+          `Address` longtext CHARACTER SET utf8mb4 NULL,
+          `Comment` longtext CHARACTER SET utf8mb4 NULL,
+          CONSTRAINT `PK_Clients` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;

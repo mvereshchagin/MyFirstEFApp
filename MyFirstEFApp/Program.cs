@@ -7,8 +7,30 @@ var config = new ConfigurationBuilder()
     .AddJsonFile("appconfig.json")
     .Build();
 
-
 var _connectionString = config.GetConnectionString("DefaultConnection");
+
+if (String.IsNullOrEmpty(_connectionString))
+{
+    Console.WriteLine("Can not find connection string");
+    return;
+}
+
+
+// применяем миграции
+using (var db = new ApplicationContext(_connectionString!))
+{
+    try
+    {
+        db.Database.Migrate();
+    }
+    catch 
+    {
+        Console.WriteLine("Error connecting database. Exiting...");
+        return;
+    }
+}
+
+
 
 Console.WriteLine("Welcome to our app.");
 
@@ -93,9 +115,9 @@ void AddClient()
 
         Console.WriteLine("A client has been stored");
     }
-    catch (Exception e)
+    catch
     {
-        Console.WriteLine(e.Message);
+        Console.WriteLine("An error occured while storing user");
     }
 }
 
@@ -108,10 +130,8 @@ void ListClients()
 
         clients = context.Clients.ToList();
     }
-    catch(Exception e)
-    {
-        Console.WriteLine(e.Message);
-    }
+    catch
+    { }
 
     Console.WriteLine("Clients:");
     Console.WriteLine("-----------------------");
@@ -174,7 +194,7 @@ void UpdateClient()
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("An error occured while updating user");
             }
             break;
         }
@@ -202,7 +222,7 @@ void DeleteClient()
     }
     catch(Exception e)
     {
-        Console.WriteLine(e.Message);
+        Console.WriteLine("An error occured while deleting user");
     }
 }
 
