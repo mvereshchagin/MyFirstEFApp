@@ -45,9 +45,12 @@ internal class ApplicationContext : DbContext
         // Вывод в окно дианостики. Используется только на стадии разработки
         // optionsBuilder.LogTo(message => System.Diagnostics.Debug.WriteLine(message));
 
+        // Lazy loading
+        optionsBuilder.UseLazyLoadingProxies();
+
         optionsBuilder.LogTo(
             action: _logStream.WriteLine, 
-            minimumLevel: Microsoft.Extensions.Logging.LogLevel.Error,
+            // minimumLevel: Microsoft.Extensions.Logging.LogLevel.Error,
             categories: new[] { DbLoggerCategory.Database.Command.Name });
     }
 
@@ -57,6 +60,11 @@ internal class ApplicationContext : DbContext
         modelBuilder.Entity<Country>()
             .ToTable("Countries")
             .Property(c => c.CurrencyName).HasColumnName("currency_name");
+
+        modelBuilder.Entity<Client>()
+            .HasOne<Company>(c => c.Company)
+            .WithMany(g => g.Clients)
+            .HasForeignKey(s => s.CompanyId);
 
         // modelBuilder.Ignore<Country>();
 

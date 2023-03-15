@@ -17,4 +17,11 @@ internal class Company
         get => _name;
         set => _name = value;
     }
+
+    public List<Client> Clients { get; set; } = new();
+
+    public override string ToString()
+    {
+        return $"{Name}";
+    }
 }

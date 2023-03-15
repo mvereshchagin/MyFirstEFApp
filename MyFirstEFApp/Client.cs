@@ -24,6 +24,8 @@ internal class Client
     [Column("style_of_communication")]
     public string? StyleOfCommunication { get; set; }
 
+    public int? CompanyId { get; set; }
+
     public Company? Company { get; set; }
 
     public override string ToString()
