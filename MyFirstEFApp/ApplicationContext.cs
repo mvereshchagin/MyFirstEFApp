@@ -13,6 +13,10 @@ internal class ApplicationContext : DbContext
     public ApplicationContext(string connecttionString)
     {
         _connectionString = connecttionString;
+
+        // Database.EnsureDeleted();
+        Database.EnsureCreated();
+
         //if (!isCreated)
         //{
         //    // не используем в реальном приложении
@@ -25,14 +29,22 @@ internal class ApplicationContext : DbContext
 
     public ApplicationContext(DbContextOptions options) : base(options)
     {
-        Database.EnsureCreated();
+
     }
 
+    #region Tables
     public DbSet<Client> Clients => Set<Client>();
+
+    public DbSet<UserProfile> Profiles => Set<UserProfile>();
 
     //public DbSet<Country> Countries => Set<Country>();
 
     public DbSet<Company> Companies => Set<Company>();
+
+    public DbSet<Service> Services => Set<Service>();
+
+    public DbSet<ClientService> ClientServices => Set<ClientService>();
+    #endregion
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -46,7 +58,7 @@ internal class ApplicationContext : DbContext
         // optionsBuilder.LogTo(message => System.Diagnostics.Debug.WriteLine(message));
 
         // Lazy loading
-        optionsBuilder.UseLazyLoadingProxies();
+        // optionsBuilder.UseLazyLoadingProxies();
 
         optionsBuilder.LogTo(
             action: _logStream.WriteLine, 
@@ -66,7 +78,45 @@ internal class ApplicationContext : DbContext
             .WithMany(g => g.Clients)
             .HasForeignKey(s => s.CompanyId);
 
+        //modelBuilder.Entity<Client>()
+        //    .HasMany(x => x.Services)
+        //    .WithMany(x => x.Clients)
+        //    .UsingEntity(t => t.ToTable("clientservices"));
+
         // modelBuilder.Ignore<Country>();
+
+
+        modelBuilder
+            .Entity<Service>()
+            .HasMany(s => s.Clients)
+            .WithMany(c => c.Services)
+            .UsingEntity<ClientService>(
+                cs => cs
+                    .HasOne(s => s.Client)
+                    .WithMany(c => c.ClientServices)
+                    .HasForeignKey(cs => cs.ClientId),
+                cs => cs
+                    .HasOne(s => s.Service)
+                    .WithMany(c => c.ClientServices)
+                    .HasForeignKey(cs => cs.ServiceId),
+                cs =>
+                {
+                    cs.HasKey(cs2 => new { cs2.Id });
+                    cs.ToTable("clientservices");
+                });
+
+        //modelBuilder.Entity<ClientService>()
+        //    .HasKey(cs => new { cs.Id });
+
+        //modelBuilder.Entity<ClientService>()
+        //    .HasOne(s => s.Client)
+        //    .WithMany(c => c.ClientServices)
+        //    .HasForeignKey(cs => cs.ClientId);
+
+        //modelBuilder.Entity<ClientService>()
+        //    .HasOne(s => s.Service)
+        //    .WithMany(c => c.ClientServices)
+        //    .HasForeignKey(cs => cs.ServiceId);
 
         base.OnModelCreating(modelBuilder);
     }

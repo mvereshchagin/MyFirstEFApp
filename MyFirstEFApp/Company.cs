@@ -4,7 +4,7 @@ namespace MyFirstEFApp;
 
 // [NotMapped]
 [Table("Companies")]
-internal class Company
+public class Company
 {
     private string _name;
 
@@ -18,7 +18,7 @@ internal class Company
         set => _name = value;
     }
 
-    public List<Client> Clients { get; set; } = new();
+    public virtual List<Client> Clients { get; set; } = new();
 
     public override string ToString()
     {

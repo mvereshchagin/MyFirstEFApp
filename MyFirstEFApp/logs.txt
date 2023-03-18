@@ -42,3 +42,1481 @@ fail: 10.03.2023 19:47:14.491 RelationalEventId.CommandError[20102] (Microsoft.E
           `Comment` longtext CHARACTER SET utf8mb4 NULL,
           CONSTRAINT `PK_Clients` PRIMARY KEY (`Id`)
       ) CHARACTER SET=utf8mb4;
+dbug: 18.03.2023 20:06:31.226 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 18.03.2023 20:06:31.236 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (16ms).
+dbug: 18.03.2023 20:06:31.238 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (27ms).
+dbug: 18.03.2023 20:06:31.255 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+info: 18.03.2023 20:06:31.291 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+dbug: 18.03.2023 20:06:31.306 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 18.03.2023 20:06:31.306 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+dbug: 18.03.2023 20:06:31.306 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (0ms).
+dbug: 18.03.2023 20:06:31.311 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+info: 18.03.2023 20:06:31.313 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+dbug: 18.03.2023 20:06:31.345 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+dbug: 18.03.2023 20:06:31.345 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).
+dbug: 18.03.2023 20:06:31.345 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (0ms).
+dbug: 18.03.2023 20:06:31.346 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+info: 18.03.2023 20:06:31.351 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+dbug: 18.03.2023 20:06:31.355 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Clients' on server 'localhost'.
+dbug: 18.03.2023 20:06:31.358 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Clients' on server 'localhost' is being disposed after spending 4ms reading results.
+dbug: 18.03.2023 20:06:31.576 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:06:31.577 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.577 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.578 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID TINYINT(1);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `Extra` = 'auto_increment'
+      			AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+info: 18.03.2023 20:06:31.603 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID TINYINT(1);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `Extra` = 'auto_increment'
+      			AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+dbug: 18.03.2023 20:06:31.603 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:06:31.604 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.604 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.604 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_AFTER_ADD_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255), IN `COLUMN_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID INT(11);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      			AND `COLUMN_TYPE` LIKE '%int%'
+      			AND `COLUMN_KEY` = 'PRI';
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL AUTO_INCREMENT;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+info: 18.03.2023 20:06:31.612 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_AFTER_ADD_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255), IN `COLUMN_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID INT(11);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      			AND `COLUMN_TYPE` LIKE '%int%'
+      			AND `COLUMN_KEY` = 'PRI';
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL AUTO_INCREMENT;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+dbug: 18.03.2023 20:06:31.613 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:06:31.613 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.613 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.613 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientService` DROP FOREIGN KEY `FK_ClientService_Service_ServicesId`;
+info: 18.03.2023 20:06:31.645 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientService` DROP FOREIGN KEY `FK_ClientService_Service_ServicesId`;
+dbug: 18.03.2023 20:06:31.645 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:06:31.645 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.645 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.645 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CALL POMELO_BEFORE_DROP_PRIMARY_KEY(NULL, 'Service');
+      ALTER TABLE `Service` DROP PRIMARY KEY;
+info: 18.03.2023 20:06:31.750 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (104ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CALL POMELO_BEFORE_DROP_PRIMARY_KEY(NULL, 'Service');
+      ALTER TABLE `Service` DROP PRIMARY KEY;
+dbug: 18.03.2023 20:06:31.750 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:06:31.750 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.750 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.750 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Service` RENAME `Services`;
+info: 18.03.2023 20:06:31.769 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Service` RENAME `Services`;
+dbug: 18.03.2023 20:06:31.769 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:06:31.769 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.769 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.769 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Services` ADD CONSTRAINT `PK_Services` PRIMARY KEY (`Id`);
+      CALL POMELO_AFTER_ADD_PRIMARY_KEY(NULL, 'Services', 'Id');
+info: 18.03.2023 20:06:31.906 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (137ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Services` ADD CONSTRAINT `PK_Services` PRIMARY KEY (`Id`);
+      CALL POMELO_AFTER_ADD_PRIMARY_KEY(NULL, 'Services', 'Id');
+dbug: 18.03.2023 20:06:31.906 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:06:31.906 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.906 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.906 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientService` ADD CONSTRAINT `FK_ClientService_Services_ServicesId` FOREIGN KEY (`ServicesId`) REFERENCES `Services` (`Id`) ON DELETE CASCADE;
+info: 18.03.2023 20:06:31.981 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (63ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientService` ADD CONSTRAINT `FK_ClientService_Services_ServicesId` FOREIGN KEY (`ServicesId`) REFERENCES `Services` (`Id`) ON DELETE CASCADE;
+dbug: 18.03.2023 20:06:31.981 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:06:31.981 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.981 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.981 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20230318180611_AddServicesMigration2', '7.0.4');
+info: 18.03.2023 20:06:31.985 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20230318180611_AddServicesMigration2', '7.0.4');
+dbug: 18.03.2023 20:06:31.985 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:06:31.985 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.985 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.985 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+info: 18.03.2023 20:06:31.996 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+dbug: 18.03.2023 20:06:31.996 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:06:31.996 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.997 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:06:31.997 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`;
+info: 18.03.2023 20:06:32.001 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`;
+dbug: 18.03.2023 20:13:24.022 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 18.03.2023 20:13:24.032 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (20ms).
+dbug: 18.03.2023 20:13:24.034 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (29ms).
+dbug: 18.03.2023 20:13:24.050 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+info: 18.03.2023 20:13:24.084 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (30ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+dbug: 18.03.2023 20:13:24.098 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 18.03.2023 20:13:24.098 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+dbug: 18.03.2023 20:13:24.098 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (0ms).
+dbug: 18.03.2023 20:13:24.104 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+info: 18.03.2023 20:13:24.106 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+dbug: 18.03.2023 20:13:24.137 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+dbug: 18.03.2023 20:13:24.137 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).
+dbug: 18.03.2023 20:13:24.137 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (0ms).
+dbug: 18.03.2023 20:13:24.139 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+info: 18.03.2023 20:13:24.144 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+dbug: 18.03.2023 20:13:24.150 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Clients' on server 'localhost'.
+dbug: 18.03.2023 20:13:24.152 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Clients' on server 'localhost' is being disposed after spending 5ms reading results.
+dbug: 18.03.2023 20:13:24.278 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.278 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.278 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.279 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID TINYINT(1);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `Extra` = 'auto_increment'
+      			AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+info: 18.03.2023 20:13:24.343 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID TINYINT(1);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `Extra` = 'auto_increment'
+      			AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+dbug: 18.03.2023 20:13:24.344 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.344 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.345 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.345 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_AFTER_ADD_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255), IN `COLUMN_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID INT(11);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      			AND `COLUMN_TYPE` LIKE '%int%'
+      			AND `COLUMN_KEY` = 'PRI';
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL AUTO_INCREMENT;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+info: 18.03.2023 20:13:24.352 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_AFTER_ADD_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255), IN `COLUMN_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID INT(11);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      			AND `COLUMN_TYPE` LIKE '%int%'
+      			AND `COLUMN_KEY` = 'PRI';
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL AUTO_INCREMENT;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+dbug: 18.03.2023 20:13:24.353 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.353 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.353 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.353 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientService` DROP FOREIGN KEY `FK_ClientService_Clients_ClientsId`;
+info: 18.03.2023 20:13:24.381 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientService` DROP FOREIGN KEY `FK_ClientService_Clients_ClientsId`;
+dbug: 18.03.2023 20:13:24.381 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.381 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.381 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.381 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientService` DROP FOREIGN KEY `FK_ClientService_Services_ServicesId`;
+info: 18.03.2023 20:13:24.397 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientService` DROP FOREIGN KEY `FK_ClientService_Services_ServicesId`;
+dbug: 18.03.2023 20:13:24.397 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.397 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.397 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.397 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CALL POMELO_BEFORE_DROP_PRIMARY_KEY(NULL, 'ClientService');
+      ALTER TABLE `ClientService` DROP PRIMARY KEY;
+info: 18.03.2023 20:13:24.482 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (85ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CALL POMELO_BEFORE_DROP_PRIMARY_KEY(NULL, 'ClientService');
+      ALTER TABLE `ClientService` DROP PRIMARY KEY;
+dbug: 18.03.2023 20:13:24.482 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.482 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.482 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.483 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientService` RENAME `clientservices`;
+info: 18.03.2023 20:13:24.501 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (18ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientService` RENAME `clientservices`;
+dbug: 18.03.2023 20:13:24.501 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.501 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.501 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.501 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` RENAME INDEX `IX_ClientService_ServicesId` TO `IX_clientservices_ServicesId`;
+info: 18.03.2023 20:13:24.518 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` RENAME INDEX `IX_ClientService_ServicesId` TO `IX_clientservices_ServicesId`;
+dbug: 18.03.2023 20:13:24.518 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.518 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.518 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.518 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` ADD CONSTRAINT `PK_clientservices` PRIMARY KEY (`ClientsId`, `ServicesId`);
+info: 18.03.2023 20:13:24.582 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (63ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` ADD CONSTRAINT `PK_clientservices` PRIMARY KEY (`ClientsId`, `ServicesId`);
+dbug: 18.03.2023 20:13:24.582 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.582 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.582 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.582 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` ADD CONSTRAINT `FK_clientservices_Clients_ClientsId` FOREIGN KEY (`ClientsId`) REFERENCES `Clients` (`user_id`) ON DELETE CASCADE;
+info: 18.03.2023 20:13:24.651 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (69ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` ADD CONSTRAINT `FK_clientservices_Clients_ClientsId` FOREIGN KEY (`ClientsId`) REFERENCES `Clients` (`user_id`) ON DELETE CASCADE;
+dbug: 18.03.2023 20:13:24.651 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.652 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.652 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.652 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` ADD CONSTRAINT `FK_clientservices_Services_ServicesId` FOREIGN KEY (`ServicesId`) REFERENCES `Services` (`Id`) ON DELETE CASCADE;
+info: 18.03.2023 20:13:24.700 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (48ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` ADD CONSTRAINT `FK_clientservices_Services_ServicesId` FOREIGN KEY (`ServicesId`) REFERENCES `Services` (`Id`) ON DELETE CASCADE;
+dbug: 18.03.2023 20:13:24.700 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.700 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.700 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.700 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20230318181310_RenameClientServiceMigration', '7.0.4');
+info: 18.03.2023 20:13:24.703 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20230318181310_RenameClientServiceMigration', '7.0.4');
+dbug: 18.03.2023 20:13:24.703 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.703 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.703 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.703 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+info: 18.03.2023 20:13:24.711 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+dbug: 18.03.2023 20:13:24.711 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:13:24.711 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.711 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:13:24.711 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`;
+info: 18.03.2023 20:13:24.715 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`;
+dbug: 18.03.2023 20:21:28.390 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 18.03.2023 20:21:28.397 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (16ms).
+dbug: 18.03.2023 20:21:28.399 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (23ms).
+dbug: 18.03.2023 20:21:28.416 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+info: 18.03.2023 20:21:28.454 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (34ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+dbug: 18.03.2023 20:21:28.473 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 18.03.2023 20:21:28.473 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+dbug: 18.03.2023 20:21:28.473 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (0ms).
+dbug: 18.03.2023 20:21:28.478 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+info: 18.03.2023 20:21:28.483 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+dbug: 18.03.2023 20:21:28.523 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+dbug: 18.03.2023 20:21:28.523 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).
+dbug: 18.03.2023 20:21:28.523 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (0ms).
+dbug: 18.03.2023 20:21:28.524 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+info: 18.03.2023 20:21:28.528 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+dbug: 18.03.2023 20:21:28.533 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Clients' on server 'localhost'.
+dbug: 18.03.2023 20:21:28.539 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Clients' on server 'localhost' is being disposed after spending 4ms reading results.
+dbug: 18.03.2023 20:21:28.825 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.825 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.825 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.826 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID TINYINT(1);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `Extra` = 'auto_increment'
+      			AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+info: 18.03.2023 20:21:28.840 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID TINYINT(1);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `Extra` = 'auto_increment'
+      			AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+dbug: 18.03.2023 20:21:28.840 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.840 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.840 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.840 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_AFTER_ADD_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255), IN `COLUMN_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID INT(11);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      			AND `COLUMN_TYPE` LIKE '%int%'
+      			AND `COLUMN_KEY` = 'PRI';
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL AUTO_INCREMENT;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+info: 18.03.2023 20:21:28.846 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_AFTER_ADD_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255), IN `COLUMN_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID INT(11);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      			AND `COLUMN_TYPE` LIKE '%int%'
+      			AND `COLUMN_KEY` = 'PRI';
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL AUTO_INCREMENT;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+dbug: 18.03.2023 20:21:28.846 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.846 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.846 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.847 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` DROP FOREIGN KEY `FK_clientservices_Clients_ClientsId`;
+info: 18.03.2023 20:21:28.867 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` DROP FOREIGN KEY `FK_clientservices_Clients_ClientsId`;
+dbug: 18.03.2023 20:21:28.867 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.867 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.867 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.867 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` DROP FOREIGN KEY `FK_clientservices_Services_ServicesId`;
+info: 18.03.2023 20:21:28.881 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` DROP FOREIGN KEY `FK_clientservices_Services_ServicesId`;
+dbug: 18.03.2023 20:21:28.881 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.881 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.881 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.881 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CALL POMELO_BEFORE_DROP_PRIMARY_KEY(NULL, 'clientservices');
+      ALTER TABLE `clientservices` DROP PRIMARY KEY;
+info: 18.03.2023 20:21:28.926 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (45ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CALL POMELO_BEFORE_DROP_PRIMARY_KEY(NULL, 'clientservices');
+      ALTER TABLE `clientservices` DROP PRIMARY KEY;
+dbug: 18.03.2023 20:21:28.926 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.926 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.926 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.926 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` DROP INDEX `IX_clientservices_ServicesId`;
+info: 18.03.2023 20:21:28.943 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` DROP INDEX `IX_clientservices_ServicesId`;
+dbug: 18.03.2023 20:21:28.943 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.943 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.943 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.943 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` RENAME `ClientServices`;
+info: 18.03.2023 20:21:28.947 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` RENAME `ClientServices`;
+dbug: 18.03.2023 20:21:28.947 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.947 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.947 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.947 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientServices` RENAME COLUMN `ServicesId` TO `ServiceId`;
+info: 18.03.2023 20:21:28.963 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientServices` RENAME COLUMN `ServicesId` TO `ServiceId`;
+dbug: 18.03.2023 20:21:28.963 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.963 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.963 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.963 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientServices` RENAME COLUMN `ClientsId` TO `ClientId`;
+info: 18.03.2023 20:21:28.974 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientServices` RENAME COLUMN `ClientsId` TO `ClientId`;
+dbug: 18.03.2023 20:21:28.974 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.974 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.974 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.974 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientServices` ADD `Id` int NOT NULL DEFAULT 0;
+info: 18.03.2023 20:21:28.986 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientServices` ADD `Id` int NOT NULL DEFAULT 0;
+dbug: 18.03.2023 20:21:28.986 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.986 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.986 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.986 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientServices` ADD `ExpireDate` date NOT NULL DEFAULT '0001-01-01';
+info: 18.03.2023 20:21:28.998 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientServices` ADD `ExpireDate` date NOT NULL DEFAULT '0001-01-01';
+dbug: 18.03.2023 20:21:28.998 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:28.998 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.999 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:28.999 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Clients` ADD `ClientServiceId` int NULL;
+info: 18.03.2023 20:21:29.032 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Clients` ADD `ClientServiceId` int NULL;
+dbug: 18.03.2023 20:21:29.032 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:21:29.032 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:29.032 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:21:29.032 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientServices` ADD CONSTRAINT `PK_ClientServices` PRIMARY KEY (`Id`);
+      CALL POMELO_AFTER_ADD_PRIMARY_KEY(NULL, 'ClientServices', 'Id');
+fail: 18.03.2023 20:21:29.060 RelationalEventId.CommandError[20102] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Failed executing DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `ClientServices` ADD CONSTRAINT `PK_ClientServices` PRIMARY KEY (`Id`);
+      CALL POMELO_AFTER_ADD_PRIMARY_KEY(NULL, 'ClientServices', 'Id');
+dbug: 18.03.2023 20:43:11.769 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 18.03.2023 20:43:11.781 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (23ms).
+dbug: 18.03.2023 20:43:11.783 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (34ms).
+dbug: 18.03.2023 20:43:11.803 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+info: 18.03.2023 20:43:11.838 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+dbug: 18.03.2023 20:43:11.856 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 18.03.2023 20:43:11.856 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+dbug: 18.03.2023 20:43:11.856 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (0ms).
+dbug: 18.03.2023 20:43:11.865 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+info: 18.03.2023 20:43:11.868 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+dbug: 18.03.2023 20:43:11.909 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+dbug: 18.03.2023 20:43:11.909 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).
+dbug: 18.03.2023 20:43:11.909 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (0ms).
+dbug: 18.03.2023 20:43:11.912 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+info: 18.03.2023 20:43:11.916 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+dbug: 18.03.2023 20:43:11.922 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Clients' on server 'localhost'.
+dbug: 18.03.2023 20:43:11.925 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Clients' on server 'localhost' is being disposed after spending 5ms reading results.
+dbug: 18.03.2023 20:43:12.133 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:43:12.133 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:43:12.134 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:43:12.135 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID TINYINT(1);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `Extra` = 'auto_increment'
+      			AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+info: 18.03.2023 20:43:12.152 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID TINYINT(1);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `Extra` = 'auto_increment'
+      			AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+dbug: 18.03.2023 20:43:12.152 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:43:12.152 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:43:12.152 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:43:12.152 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_AFTER_ADD_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255), IN `COLUMN_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID INT(11);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      			AND `COLUMN_TYPE` LIKE '%int%'
+      			AND `COLUMN_KEY` = 'PRI';
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL AUTO_INCREMENT;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+info: 18.03.2023 20:43:12.162 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_AFTER_ADD_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255), IN `COLUMN_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID INT(11);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      			AND `COLUMN_TYPE` LIKE '%int%'
+      			AND `COLUMN_KEY` = 'PRI';
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL AUTO_INCREMENT;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+dbug: 18.03.2023 20:43:12.162 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:43:12.162 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:43:12.162 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:43:12.162 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` DROP FOREIGN KEY `FK_clientservices_Clients_ClientsId`;
+fail: 18.03.2023 20:43:12.175 RelationalEventId.CommandError[20102] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Failed executing DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` DROP FOREIGN KEY `FK_clientservices_Clients_ClientsId`;
+dbug: 18.03.2023 20:45:15.953 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 18.03.2023 20:45:15.962 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (17ms).
+dbug: 18.03.2023 20:45:15.964 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (26ms).
+dbug: 18.03.2023 20:45:15.983 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+info: 18.03.2023 20:45:16.032 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (40ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+dbug: 18.03.2023 20:45:16.051 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 18.03.2023 20:45:16.051 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).
+dbug: 18.03.2023 20:45:16.051 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (0ms).
+dbug: 18.03.2023 20:45:16.057 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+info: 18.03.2023 20:45:16.059 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='Clients' AND TABLE_NAME='__EFMigrationsHistory';
+dbug: 18.03.2023 20:45:16.093 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+dbug: 18.03.2023 20:45:16.093 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).
+dbug: 18.03.2023 20:45:16.093 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (0ms).
+dbug: 18.03.2023 20:45:16.095 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+info: 18.03.2023 20:45:16.100 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+dbug: 18.03.2023 20:45:16.104 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Clients' on server 'localhost'.
+dbug: 18.03.2023 20:45:16.107 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Clients' on server 'localhost' is being disposed after spending 4ms reading results.
+dbug: 18.03.2023 20:45:16.340 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:45:16.340 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:45:16.340 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:45:16.341 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID TINYINT(1);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `Extra` = 'auto_increment'
+      			AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+info: 18.03.2023 20:45:16.357 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_BEFORE_DROP_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_BEFORE_DROP_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID TINYINT(1);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `Extra` = 'auto_increment'
+      			AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_KEY` = 'PRI'
+      			LIMIT 1;
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+dbug: 18.03.2023 20:45:16.357 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:45:16.358 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:45:16.358 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:45:16.358 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_AFTER_ADD_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255), IN `COLUMN_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID INT(11);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      			AND `COLUMN_TYPE` LIKE '%int%'
+      			AND `COLUMN_KEY` = 'PRI';
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL AUTO_INCREMENT;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+info: 18.03.2023 20:45:16.368 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DROP PROCEDURE IF EXISTS `POMELO_AFTER_ADD_PRIMARY_KEY`;
+      CREATE PROCEDURE `POMELO_AFTER_ADD_PRIMARY_KEY`(IN `SCHEMA_NAME_ARGUMENT` VARCHAR(255), IN `TABLE_NAME_ARGUMENT` VARCHAR(255), IN `COLUMN_NAME_ARGUMENT` VARCHAR(255))
+      BEGIN
+      	DECLARE HAS_AUTO_INCREMENT_ID INT(11);
+      	DECLARE PRIMARY_KEY_COLUMN_NAME VARCHAR(255);
+      	DECLARE PRIMARY_KEY_TYPE VARCHAR(255);
+      	DECLARE SQL_EXP VARCHAR(1000);
+      	SELECT COUNT(*)
+      		INTO HAS_AUTO_INCREMENT_ID
+      		FROM `information_schema`.`COLUMNS`
+      		WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      			AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      			AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      			AND `COLUMN_TYPE` LIKE '%int%'
+      			AND `COLUMN_KEY` = 'PRI';
+      	IF HAS_AUTO_INCREMENT_ID THEN
+      		SELECT `COLUMN_TYPE`
+      			INTO PRIMARY_KEY_TYPE
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SELECT `COLUMN_NAME`
+      			INTO PRIMARY_KEY_COLUMN_NAME
+      			FROM `information_schema`.`COLUMNS`
+      			WHERE `TABLE_SCHEMA` = (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA()))
+      				AND `TABLE_NAME` = TABLE_NAME_ARGUMENT
+      				AND `COLUMN_NAME` = COLUMN_NAME_ARGUMENT
+      				AND `COLUMN_TYPE` LIKE '%int%'
+      				AND `COLUMN_KEY` = 'PRI';
+      		SET SQL_EXP = CONCAT('ALTER TABLE `', (SELECT IFNULL(SCHEMA_NAME_ARGUMENT, SCHEMA())), '`.`', TABLE_NAME_ARGUMENT, '` MODIFY COLUMN `', PRIMARY_KEY_COLUMN_NAME, '` ', PRIMARY_KEY_TYPE, ' NOT NULL AUTO_INCREMENT;');
+      		SET @SQL_EXP = SQL_EXP;
+      		PREPARE SQL_EXP_EXECUTE FROM @SQL_EXP;
+      		EXECUTE SQL_EXP_EXECUTE;
+      		DEALLOCATE PREPARE SQL_EXP_EXECUTE;
+      	END IF;
+      END;
+dbug: 18.03.2023 20:45:16.368 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 18.03.2023 20:45:16.368 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:45:16.368 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 18.03.2023 20:45:16.368 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` DROP FOREIGN KEY `FK_clientservices_Clients_ClientsId`;
+fail: 18.03.2023 20:45:16.377 RelationalEventId.CommandError[20102] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Failed executing DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `clientservices` DROP FOREIGN KEY `FK_clientservices_Clients_ClientsId`;

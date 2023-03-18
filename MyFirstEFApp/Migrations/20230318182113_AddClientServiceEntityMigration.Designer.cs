@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyFirstEFApp;
 
@@ -10,9 +11,11 @@ using MyFirstEFApp;
 namespace MyFirstEFApp.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230318182113_AddClientServiceEntityMigration")]
+    partial class AddClientServiceEntityMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,6 +47,9 @@ namespace MyFirstEFApp.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("longtext");
 
+                    b.Property<int?>("ClientServiceId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Comment")
                         .HasColumnType("longtext");
 
@@ -69,6 +75,8 @@ namespace MyFirstEFApp.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientServiceId");
+
                     b.HasIndex("CompanyId");
 
                     b.HasIndex("Name")
@@ -93,10 +101,6 @@ namespace MyFirstEFApp.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("ServiceId");
 
                     b.ToTable("ClientServices");
                 });
@@ -201,30 +205,15 @@ namespace MyFirstEFApp.Migrations
 
             modelBuilder.Entity("MyFirstEFApp.Client", b =>
                 {
+                    b.HasOne("MyFirstEFApp.ClientService", null)
+                        .WithMany("Clients")
+                        .HasForeignKey("ClientServiceId");
+
                     b.HasOne("MyFirstEFApp.Company", "Company")
                         .WithMany("Clients")
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("MyFirstEFApp.ClientService", b =>
-                {
-                    b.HasOne("MyFirstEFApp.Client", "Client")
-                        .WithMany("ClientServices")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyFirstEFApp.Service", "Service")
-                        .WithMany("ClientServices")
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Client");
-
-                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("MyFirstEFApp.UserProfile", b =>
@@ -240,19 +229,17 @@ namespace MyFirstEFApp.Migrations
 
             modelBuilder.Entity("MyFirstEFApp.Client", b =>
                 {
-                    b.Navigation("ClientServices");
-
                     b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("MyFirstEFApp.ClientService", b =>
+                {
+                    b.Navigation("Clients");
                 });
 
             modelBuilder.Entity("MyFirstEFApp.Company", b =>
                 {
                     b.Navigation("Clients");
-                });
-
-            modelBuilder.Entity("MyFirstEFApp.Service", b =>
-                {
-                    b.Navigation("ClientServices");
                 });
 #pragma warning restore 612, 618
         }

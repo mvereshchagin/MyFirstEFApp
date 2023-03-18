@@ -16,21 +16,7 @@ if (String.IsNullOrEmpty(_connectionString))
 }
 
 
-// применяем миграции
-using (var db = new ApplicationContext(_connectionString!))
-{
-    try
-    {
-        db.Database.Migrate();
-    }
-    catch 
-    {
-        Console.WriteLine("Error connecting database. Exiting...");
-        return;
-    }
-}
-
-
+Migrate();
 
 Console.WriteLine("Welcome to our app.");
 
@@ -40,7 +26,8 @@ while (true)
     Console.WriteLine("Please, select an action: " +
     "1 - List clients, 2 - Add client, 3 - Update client, 4 - Delete client; \r\n" +
     "5 - List companies, 6 - Add company, 7 - Update company, 8 - Delete company; \r\n" +
-    "9 - List clients for company; 0 - Exit");
+    "9 - List clients for company; 10 - Add status; 11 - Add service; 12 - List services; \r\n" +
+    "0 - Exit");
 
     var shouldExit = false;
 
@@ -53,7 +40,7 @@ while (true)
     switch (choice)
     {
         case 1:
-            ListClients2();
+            ListClients();
             break;
         case 2:
             AddClient();
@@ -78,6 +65,15 @@ while (true)
             break;
         case 9:
             ListClientsForCompany3();
+            break;
+        case 10:
+            AddStatus();
+            break;
+        case 11:
+            AddService();
+            break;
+        case 12:
+            ListServices();
             break;
         case 0:
             shouldExit = true;
@@ -176,9 +172,10 @@ void ListClients2()
 {
     var context = new ApplicationContext(_connectionString);
 
+    // ToList нужен, чтобы запрос ушел в БД
     Console.WriteLine("Clients:");
     Console.WriteLine("-----------------------");
-    foreach (var client in context.Clients)
+    foreach (var client in context.Clients.ToList())
         Console.WriteLine($"{client}; Company: {client.Company?.Name}");
     Console.WriteLine("-----------------------");
 }
@@ -295,6 +292,37 @@ Client FindClientByName(ApplicationContext context)
     }
 }
 
+void AddStatus()
+{
+    using var db = new ApplicationContext(_connectionString);
+
+    var client = FindClientByName(db);
+
+    Console.WriteLine("Please, enter your status");
+    var status = Console.ReadLine();
+
+    var profile = new UserProfile()
+    {
+        Status = status,
+        Client = client,
+    };
+
+    // client.Profile = profile;
+
+    db.Profiles.Add(profile);
+
+    try
+    {
+        db.SaveChanges();
+    }
+    catch
+    {
+        Console.WriteLine("Ooops! Something goes wrong!");
+    }
+
+    Console.WriteLine("Status has been changed");
+}
+
 #endregion
 
 #region CRUD companies
@@ -389,26 +417,28 @@ void ListClientsForCompany2()
 
 void ListClientsForCompany3()
 {
-    using var context = new ApplicationContext(_connectionString);
+    using (var context = new ApplicationContext(_connectionString))
+    {
 
-    var company = FindCompanyByName(context);
+        var company = FindCompanyByName(context);
 
-    // eager loading
-    var company2 = context.Companies
-        // так делаем!
-        // отбор в БД
-        .Where(x => x.Id == company.Id)
-        .Include(x => x.Clients)
-        .ToList()
-        // Так не делаем! Отбор в оперативной памяти
-        // .Where(x => x.Id == company.Id)
-        .Single();
+        // eager loading
+        var company2 = context.Companies
+            // так делаем!
+            // отбор в БД
+            .Where(x => x.Id == company.Id)
+            .Include(x => x.Clients)
+            .ToList()
+            // Так не делаем! Отбор в оперативной памяти
+            // .Where(x => x.Id == company.Id)
+            .Single();
 
-    Console.WriteLine($"Client of {company.Name}:");
-    Console.WriteLine("-----------------------");
-    foreach (var client in company2.Clients)
-        Console.WriteLine(client);
-    Console.WriteLine("-----------------------");
+        Console.WriteLine($"Client of {company.Name}:");
+        Console.WriteLine("-----------------------");
+        foreach (var client in company2.Clients)
+            Console.WriteLine(client);
+        Console.WriteLine("-----------------------");
+    }
 }
 
 void UpdateCompany()
@@ -523,6 +553,111 @@ Company FindCompanyByName(ApplicationContext context)
     }
 }
 
+#endregion
+
+#region CRUD service
+void AddService()
+{
+    string? name = null;
+    do
+    {
+        Console.WriteLine("Please, enter name");
+        name = Console.ReadLine();
+    }
+    while (String.IsNullOrEmpty(name));
+
+    var service = new Service()
+    {
+        Name = name!,
+    };
+
+    using var context = new ApplicationContext(_connectionString);
+
+    context.Services.Add(service);
+
+    while(true)
+    {
+        Console.WriteLine("Subscribe cleint for service (y / N)?");
+        var answer = Console.ReadLine();
+
+        if (answer != "y")
+            break;
+
+        var client = FindClientByName(context);
+
+        var clientService = new ClientService()
+        {
+            Client = client,
+            Service = service,
+            ExpireDate = new DateOnly(2024, 12, 31),
+        };
+
+        context.ClientServices.Add(clientService);
+
+        //service.Clients.Add(client);
+    }
+
+    try
+    {
+        context.SaveChanges();
+
+        Console.WriteLine("A service has been stored");
+    }
+    catch(Exception e)
+    {
+        Console.WriteLine(e.Message);
+        Console.WriteLine("An error occured while storing user");
+    }
+}
+
+void ListServices()
+{
+    using var context = new ApplicationContext(_connectionString);
+
+    List<Service> services = new();
+    try
+    {
+
+        services = context.Services
+            .Include(x => x.Clients)
+            .ToList();
+    }
+    catch
+    { }
+
+
+    var results =
+        from service in services
+        select new
+        {
+            ServiceName = service.Name,
+            Clients = service.Clients.Select(x => x.Name).DefaultIfEmpty().Aggregate((x, y) => $"{x}, {y}")
+        };
+
+    Console.WriteLine("Services:");
+    Console.WriteLine("-----------------------");
+    foreach (var service in results)
+        Console.WriteLine($"{service.ServiceName}: {service.Clients}");
+    Console.WriteLine("-----------------------");
+}
+#endregion
+
+#region Migrate
+void Migrate()
+{
+    // применяем миграции
+    using var db = new ApplicationContext(_connectionString!);
+    try
+    {
+        db.Database.Migrate();
+    }
+    catch
+    {
+        Console.WriteLine("Error connecting database. Exiting...");
+        return;
+    }
+
+}
 #endregion
 
 

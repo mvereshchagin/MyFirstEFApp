@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MyFirstEFApp;
 
 [Index("Name", IsUnique = true)]
-internal class Client
+public class Client
 {
     [Column("user_id")]
     public int Id { get; set; }
@@ -26,7 +26,13 @@ internal class Client
 
     public int? CompanyId { get; set; }
 
-    public Company? Company { get; set; }
+    public virtual Company? Company { get; set; }
+
+    public UserProfile? Profile { get; set; }
+
+    public List<Service> Services { get; set; } = new();
+
+    public List<ClientService> ClientServices { get; set; } = new();
 
     public override string ToString()
     {
